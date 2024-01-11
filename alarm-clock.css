@@ -1,0 +1,50 @@
+body {
+    background: linear-gradient(to left, red, blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    color: white;
+    font-family: sans-serif;
+  }
+  .wrapper {
+    padding: 20px;
+    width: 30%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: hsla(0, 0%, 100%, 0.245);
+  }
+  .image img {
+    width: 300px;
+  }
+  .input input {
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    font-size: 2em;
+  }
+  .buttons button {
+    padding: 15px;
+    /* margin: 15px; */
+    margin-top: 30px;
+    font-size: 20px;
+    background-color: green;
+    color: white;
+  }
+  .active {
+    animation: animate 0.1s linear infinite;
+  }
+  @keyframes animate {
+    0% {
+      transform: rotate(15deg);
+    }
+    50% {
+      transform: rotate(-15deg);
+    }
+    100% {
+      transform: rotate(15deg);
+    }
+  }

@@ -4,58 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alarm Clock</title>
-    <style>
-      body {
-        background: linear-gradient(to left, red, blue);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 90vh;
-        color: white;
-        font-family: sans-serif;
-      }
-      .wrapper {
-        padding: 20px;
-        width: 30%;
-        height: 80%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        background-color: hsla(0, 0%, 100%, 0.245);
-      }
-      .image img {
-        width: 300px;
-      }
-      .input input {
-        padding: 10px;
-        width: 200px;
-        text-align: center;
-        font-size: 2em;
-      }
-      .buttons button {
-        padding: 15px;
-        /* margin: 15px; */
-        margin-top: 30px;
-        font-size: 20px;
-        background-color: green;
-        color: white;
-      }
-      .active {
-        animation: animate 0.1s linear infinite;
-      }
-      @keyframes animate {
-        0% {
-          transform: rotate(15deg);
-        }
-        50% {
-          transform: rotate(-15deg);
-        }
-        100% {
-          transform: rotate(15deg);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="alarm-clock.css" />
   </head>
   <body>
     <div class="wrapper">
@@ -72,51 +21,6 @@
       </div>
     </div>
 
-    <script>
-      var img = document.querySelector(".img");
-      var alarmText = document.querySelector(".alarmText");
-      var audio = new Audio();
-      audio.src = "alarm_clock_old.mp3";
-      var isAlarmSet = false;
-      var setTimeInterval;
-
-      function setAlarm() {
-        var timeInput = document.getElementById("timeInput").value;
-        isAlarmSet = true;
-        alarmText.innerHTML = `Alarm is set at ${timeInput}`;
-        if (isAlarmSet) {
-          setTimeInterval = setInterval(() => {
-            let compTime = new Date().toLocaleString("en-US", {
-              hour: "numeric",
-              minute: "numeric",
-              hour12: false,
-            });
-            // Extract hours and minutes from timeInput and compTime
-            let inputHours = parseInt(timeInput.split(":")[0]);
-            let inputMinutes = parseInt(timeInput.split(":")[1]);
-            let compHours = parseInt(compTime.split(":")[0]);
-            let compMinutes = parseInt(compTime.split(":")[1]);
-
-            if (inputHours === compHours && inputMinutes === compMinutes) {
-              img.classList.add("active");
-              alarmText.innerHTML = "Alarm Started";
-              audio.play();
-              setTimeout(() => {
-                img.classList.remove("active");
-                alarmText.innerHTML = "Alarm stopped";
-                audio.pause();
-              }, 60000);
-            }
-          }, 1000);
-        }
-      }
-      function stopAlarm() {
-        clearInterval(setTimeInterval);
-        alarmText.innerHTML = "Alarm Stopped!";
-        img.classList.remove("active");
-        audio.pause();
-        timeInput = "";
-      }
-    </script>
+    <script src="alarm-clock.js"></script>
   </body>
 </html>
